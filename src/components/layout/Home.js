@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import QCard from './QCard';
+import QCardReveal from './QCardReveal';
+import QBudget from '../qs/QBudget';
 
 export default class Home extends Component {
   render() {
@@ -7,20 +9,19 @@ export default class Home extends Component {
       <div className="container home">
         <div className="row">
           <div className="col s12 m4">
-            <QCard title="Budget">
-              <span>$180.000</span>
-              <p>120 bees X $500</p>
-            </QCard>
+            <QBudget />          
           </div>
+        
           <div className="col s12 m4">
-            <QCard title="Forecast">
-              <span>$30.000</span>
+            <QCard title="Q1 Forecast">
+              <span className="red-text big-text">- $30.000</span>
               <p>Listado de Beneficios Recurrentes</p>
             </QCard>
           </div>
+
           <div className="col s12 m4">
-            <QCard title="Available">
-              <span>$150.000</span>
+            <QCard title="Q1 Available">
+              <span className="green-text big-text">$150.000</span>
               <p>Listado de Gastos reportados</p>
             </QCard>
           </div>

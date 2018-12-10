@@ -16,3 +16,17 @@ code {
 .home {
   padding-top: 20px
 }
+
+.big-text {
+  font-size: xx-large
+}
+
+.card {
+  min-height: 180px;
+  text-align: center;
+}
+
+.money {
+  font-size: xx-large;
+  cursor: pointer;
+}
