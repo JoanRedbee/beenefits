@@ -5,9 +5,9 @@ const QCard = (props) => {
     <div className="card">
       <div className="card-content grey-text text-darken-3">
         <span className="card-title">
-          Una carta del Q
+          {props.title}
         </span>
-        <p>Una descripcion de lo que representa</p>
+        {props.children}
       </div>
     </div>
   )
