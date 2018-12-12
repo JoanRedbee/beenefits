@@ -11,7 +11,7 @@ const QBudget = () => {
       </div>
       <div className="card-reveal">
         <span className="card-title">Budget<i className="material-icons right">close</i></span>
-        <p>120 bees X $500 = $180.000</p>
+        <p className="xlarge-text">120 bees X $500 = $180.000</p>
       </div>
     </div>
   )

@@ -30,3 +30,12 @@ code {
   font-size: xx-large;
   cursor: pointer;
 }
+
+.xlarge-text {
+  font-size: x-large;
+}
+
+.collection.with-header > .list-header {
+  background-color: #f26e6e;
+  color: white;
+}
