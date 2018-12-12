@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import QCard from './QCard';
-import QCardReveal from './QCardReveal';
 import QBudget from '../qs/QBudget';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +23,9 @@ export default class Home extends Component {
 
           <div className="col s12 m4">
             <QCard title="Q1 Available">
-              <span className="green-text big-text">$150.000</span>
+              <Link to="/expenses">
+                <span className="green-text big-text">$150.000</span>
+              </Link>
               <p>Listado de Gastos reportados</p>
             </QCard>
           </div>

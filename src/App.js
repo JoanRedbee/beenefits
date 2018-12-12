@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
-import RecurringBenefitsList from './components/benefits/RecurringBenefitsList';
+import RecurringBenefits from './components/layout/RecurringBenefits';
+import Expenses from './components/layout/Expenses';
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/forecast" component={RecurringBenefitsList} />
+            <Route path="/forecast" component={RecurringBenefits} />
+            <Route path="/expenses" component={Expenses} />
           </Switch>
         </div>
       </BrowserRouter>
