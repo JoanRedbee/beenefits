@@ -2,14 +2,27 @@ import React, { Component } from 'react'
 import QCard from './QCard';
 import QBudget from '../qs/QBudget';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
+function budgetPerMonth(month) {
+  return month.bees * month.$_per_bee
+}
+
+class Home extends Component {
   render() {
+    console.log(this.props)
+    const { budget } = this.props
+    const year = new Date().getFullYear()
+    const months = budget[year]
+    const qbudget = months.map(budgetPerMonth).reduce((prev, actual) => prev + actual, 0);
+
     return (
       <div className="container home">
         <div className="row">
           <div className="col s12 m4">
-            <QBudget />          
+            <QBudget 
+              budget={qbudget}
+            />          
           </div>
         
           <div className="col s12 m4">
@@ -34,3 +47,11 @@ export default class Home extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    budget: state.budget
+  }
+}
+
+export default connect(mapStateToProps)(Home)
