@@ -1,4 +1,4 @@
-const initState = {
+const budgetState = {
   '2018': [
       {
         name: "Enero",
@@ -18,10 +18,11 @@ const initState = {
   ]
 }
 
-const budgetReducer = (state = initState, action) => {
+const budgetReducer = (state = {}, action) => {
   switch (action.type) {
     case 'GET_BUDGET':
-      console.log(action.year);
+      //console.log(action.year);
+      return budgetState
   }
   return state
 }

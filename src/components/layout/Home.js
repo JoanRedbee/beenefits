@@ -20,7 +20,7 @@ class Home extends Component {
     console.log(this.props)
     const { budget } = this.props
     const year = new Date().getFullYear()
-    const months = budget[year]
+    const months = budget[year] || []
     const qbudget = months.map(budgetPerMonth).reduce((prev, actual) => prev + actual, 0);
 
     return (
