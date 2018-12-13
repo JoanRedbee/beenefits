@@ -3,12 +3,19 @@ import QCard from './QCard';
 import QBudget from '../qs/QBudget';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getBudget } from '../../store/actions/budgetActions';
 
 function budgetPerMonth(month) {
   return month.bees * month.$_per_bee
 }
 
 class Home extends Component {
+
+  componentWillMount() {
+    const year = new Date().getFullYear()
+    this.props.getBudget(year)
+  }
+
   render() {
     console.log(this.props)
     const { budget } = this.props
@@ -54,4 +61,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getBudget: (year) => dispatch(getBudget(year))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

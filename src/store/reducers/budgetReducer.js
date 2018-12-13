@@ -19,6 +19,10 @@ const initState = {
 }
 
 const budgetReducer = (state = initState, action) => {
+  switch (action.type) {
+    case 'GET_BUDGET':
+      console.log(action.year);
+  }
   return state
 }
 
