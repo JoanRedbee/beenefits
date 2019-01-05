@@ -4,6 +4,8 @@ import QBudget from '../qs/QBudget';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getBudget } from '../../store/actions/budgetActions';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 function budgetPerMonth(month) {
   return month.bees * month.$_per_bee
@@ -11,30 +13,31 @@ function budgetPerMonth(month) {
 
 class Home extends Component {
 
+  /*
   componentWillMount() {
     const year = new Date().getFullYear()
     this.props.getBudget(year)
   }
+  */
 
   render() {
     console.log(this.props)
     const { budget } = this.props
-    const year = new Date().getFullYear()
-    const months = budget[year] || []
-    const qbudget = months.map(budgetPerMonth).reduce((prev, actual) => prev + actual, 0);
+    //const months = budget.months || []
+    //const qbudget = months.map(budgetPerMonth).reduce((prev, actual) => prev + actual, 0);
 
     return (
       <div className="container home">
         <div className="row">
           <div className="col s12 m4">
             <QBudget 
-              budget={qbudget}
+              months={budget.months}
             />          
           </div>
         
           <div className="col s12 m4">
-            <QCard title="Q1 Forecast">
-              <Link to="/forecast">
+            <QCard title="Q1 Recurring benefits">
+              <Link to="/recurring">
                 <span className="red-text big-text">- $30.000</span>
               </Link>
               <p>Listado de Beneficios Recurrentes</p>
@@ -56,11 +59,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     budget: state.budget
   }
 }
 
+/*
 const mapDispatchToProps = (dispatch) => {
   return {
     getBudget: (year) => dispatch(getBudget(year))
@@ -68,3 +73,13 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
+*/
+var year = '2018';
+export default compose(
+  //connect(mapStateToProps)
+  connect(mapStateToProps),
+  firestoreConnect(['recurring_benefits', `budget/${year}/months`, 'semi_recurrent'])
+)(Home)
+
+
+//export default connect(mapStateToProps)(Home)

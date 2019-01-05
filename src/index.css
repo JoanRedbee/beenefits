@@ -39,3 +39,7 @@ code {
   background-color: #f26e6e;
   color: white;
 }
+
+.card-reveal > p {
+  margin: 0px;
+}
